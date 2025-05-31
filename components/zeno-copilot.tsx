@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { client } from "@/lib/client";
 import { ConnectButton } from "thirdweb/react";
+import { flowEvmTestnet } from "@/lib/flow-evm-testnet";
 
 export function ZenoCopilot() {
   const [hasContent, setHasContent] = useState(false);
@@ -54,7 +55,7 @@ export function ZenoCopilot() {
             <li>
               <a
                 href="#"
-                className="flex items-center gap-4 px-4 py-3 text-[#1F1F2E] hover:bg-gradient-to-r hover:from-yellow-100 hover:to-orange-100 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-md"
+                className="flex items-center p-3 text-[#1F1F2E] hover:bg-gradient-to-r hover:from-yellow-100 hover:to-orange-100 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-md"
               >
                 <Vault className="w-5 h-5" />
                 <span className="electro-text">Vaults</span>
@@ -64,9 +65,9 @@ export function ZenoCopilot() {
         </nav>
 
         {/* Connect Wallet */}
-        <div className="p-4 border-t border-blue-100">
-          <div className="flex items-center gap-3 px-4 py-3 text-[#1F1F2E] hover:bg-gradient-to-r hover:from-orange-100 hover:to-yellow-100 rounded-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
-            <ConnectButton client={client} />
+        <div className="p-4 border-t border-blue-100 flex items-center justify-center">
+          <div className="flex items-center px-4 py-3 text-[#1F1F2E] hover:bg-gradient-to-r hover:from-orange-100 hover:to-yellow-100 rounded-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
+            <ConnectButton client={client} chains={[flowEvmTestnet]} />
           </div>
         </div>
       </div>
