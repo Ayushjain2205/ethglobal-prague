@@ -1,10 +1,20 @@
-"use client"
-import { MessageSquare, Vault, TrendingUp, ArrowUpDown, BookOpen, PieChart, CornerDownLeft } from "lucide-react"
-import Image from "next/image"
-import { useState } from "react"
+"use client";
+import {
+  MessageSquare,
+  Vault,
+  TrendingUp,
+  ArrowUpDown,
+  BookOpen,
+  PieChart,
+  CornerDownLeft,
+} from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { client } from "@/lib/client";
+import { ConnectButton } from "thirdweb/react";
 
 export function ZenoCopilot() {
-  const [hasContent, setHasContent] = useState(false)
+  const [hasContent, setHasContent] = useState(false);
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-[#FAFAFC] to-blue-50">
@@ -21,7 +31,9 @@ export function ZenoCopilot() {
               className="w-full h-full object-contain"
             />
           </div>
-          <span className="electro-title text-xl text-[#1F1F2E] glow-text">Zeno</span>
+          <span className="electro-title text-xl text-[#1F1F2E] glow-text">
+            Zeno
+          </span>
         </div>
 
         {/* Navigation */}
@@ -34,7 +46,9 @@ export function ZenoCopilot() {
               >
                 <MessageSquare className="w-5 h-5" />
                 <span className="electro-text">Chats</span>
-                <span className="ml-auto text-lg font-bold electro-text">+</span>
+                <span className="ml-auto text-lg font-bold electro-text">
+                  +
+                </span>
               </a>
             </li>
             <li>
@@ -52,10 +66,7 @@ export function ZenoCopilot() {
         {/* Connect Wallet */}
         <div className="p-4 border-t border-blue-100">
           <div className="flex items-center gap-3 px-4 py-3 text-[#1F1F2E] hover:bg-gradient-to-r hover:from-orange-100 hover:to-yellow-100 rounded-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
-            <div className="w-8 h-8 bg-gradient-to-br from-orange-200 to-yellow-200 rounded-2xl flex items-center justify-center shadow-md">
-              <span className="text-lg">⚡</span>
-            </div>
-            <span className="electro-text">Connect Wallet</span>
+            <ConnectButton client={client} />
           </div>
         </div>
       </div>
@@ -92,9 +103,13 @@ export function ZenoCopilot() {
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
-                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">Trending</span>
+                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">
+                    Trending
+                  </span>
                 </div>
-                <p className="text-sm text-gray-600 electro-text">Search the trending tokens</p>
+                <p className="text-sm text-gray-600 electro-text">
+                  Search the trending tokens
+                </p>
               </div>
 
               {/* Stake Card */}
@@ -103,7 +118,9 @@ export function ZenoCopilot() {
                   <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <PieChart className="w-6 h-6 text-white" />
                   </div>
-                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">Stake</span>
+                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">
+                    Stake
+                  </span>
                 </div>
                 <p className="text-sm text-gray-600 electro-text">Stake Sol</p>
               </div>
@@ -114,9 +131,13 @@ export function ZenoCopilot() {
                   <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <ArrowUpDown className="w-6 h-6 text-white" />
                   </div>
-                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">Trade</span>
+                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">
+                    Trade
+                  </span>
                 </div>
-                <p className="text-sm text-gray-600 electro-text">Swap on Jupiter</p>
+                <p className="text-sm text-gray-600 electro-text">
+                  Swap on Jupiter
+                </p>
               </div>
 
               {/* Knowledge Card */}
@@ -125,9 +146,13 @@ export function ZenoCopilot() {
                   <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
-                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">Knowledge</span>
+                  <span className="font-bold text-lg text-[#1F1F2E] electro-title">
+                    Knowledge
+                  </span>
                 </div>
-                <p className="text-sm text-gray-600 electro-text">Get developer docs for protocols</p>
+                <p className="text-sm text-gray-600 electro-text">
+                  Get developer docs for protocols
+                </p>
               </div>
             </div>
           </div>
@@ -139,11 +164,15 @@ export function ZenoCopilot() {
                 placeholder="Ask me to swap tokens, check portfolio, find trending coins, or explain DeFi protocols... 🚀"
                 rows={2}
                 className="w-full px-6 py-4 pr-16 text-lg border-2 border-blue-200 rounded-3xl focus:border-[#3366FF] focus:ring-4 focus:ring-[#3366FF]/20 bg-white shadow-lg hover:shadow-xl transition-all duration-300 electro-text resize-none"
-                onChange={(e) => setHasContent(e.target.value.trim().length > 0)}
+                onChange={(e) =>
+                  setHasContent(e.target.value.trim().length > 0)
+                }
               />
               <CornerDownLeft
                 className={`absolute right-5 bottom-5 w-6 h-6 transition-all duration-300 cursor-pointer ${
-                  hasContent ? "text-[#3366FF] hover:text-[#7366FF]" : "text-gray-400"
+                  hasContent
+                    ? "text-[#3366FF] hover:text-[#7366FF]"
+                    : "text-gray-400"
                 }`}
               />
             </div>
@@ -151,5 +180,5 @@ export function ZenoCopilot() {
         </div>
       </div>
     </div>
-  )
+  );
 }
